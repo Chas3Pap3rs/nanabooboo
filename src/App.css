@@ -1,42 +1,289 @@
 #root {
-  max-width: 1280px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8b800;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* General styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #e8b800;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+a {
+  text-decoration: none; /* Remove underline */
+  color: black; /* Set default text color; change as needed */
+}
+
+tr, td {
+  
+}
+
+.btn {
+  background-color: transparent;
+  width: 150px;
+  height: 29px;
+  border-radius: 5px;
+  border: none;
+  font-size: large;
+  color:antiquewhite;
+}
+
+.btn:hover {
+  color: #e8b800;
+}
+
+.edit {
+  color: #e8b800;
+  border: solid 1px #e8b800;
+  border-radius: 5px;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin: .25rem;
+}
+
+/* Header styles */
+
+.header-container {
+  border-radius: 15px;
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center;
+  margin: .25rem;
+}
+
+.header-container .btn {
+  display: inline-block; /* Make buttons inline */
+  border-radius: 5px; /* Match sidebar item border radius */
+  text-align: center; /* Center text inside buttons */
+  color: black; /* Text color */
+  font-size: large;
+  text-decoration: none; /* Remove underline from links */
+  padding: .25rem;
+  transition: background-color 0.3s; /* Smooth background color transition */
+  margin: .25rem;
+
+}
+
+.header-container .btn:hover {
+  border: solid 1px black;
+  background-color: black;
+  color: #e8b800;
+  font-size: larger;
+}
+
+.navbar {
+  position: relative; /* This makes it a reference point for absolute positioning */
+}
+
+
+
+.nav-link:last-child {
+  border-bottom: none; /* Remove border for the last item */
+}
+
+/* Custom styles for the toggle button */
+.navbar-toggler {
+  padding: 0.5rem;
+  border: none;
+  background-color: transparent;
+  color: #333;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  position: absolute; /* Position the toggle button absolutely within .navbar */
+  bottom: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+.navbar-toggler:hover {
+  cursor: pointer;
+}
+
+.large-logo-navbar-toggler {
+  background-color: transparent !important;
+  border: none;
+}
+
+.navbar-collapse {
+  display: flex; /* Make it a flex container */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally in the container */
+  justify-content: center; /* Center items vertically if there's extra space */
+}
+
+.me-auto.navbar-nav {
+  width: 100%;
+}
+
+/* Hide the navbar content and toggle button when the viewport width is more than 1000px */
+@media (min-width: 1001px) {
+  .me-auto.navbar-nav
+   {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* Adjust button layout based on screen size */
+@media (max-width: 886px) {
+  .header-container .btn {
+    display: block; /* Stack buttons vertically */
+    width: 50%; /* Full width */
+    box-sizing: border-box; /* Include padding and border in element's width */
+    margin: 0 auto;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Main content styles */
+  .main-content-wrapper {
+    display: flex; /* Ensure this is a flex container */
+    flex-direction: row; /* Align children horizontally */
+    flex: 1; /* Take up remaining space */
+    padding: 1rem;
+    margin: .25rem;
+    border-radius: 15px;
+    background-image: url('./src/assets/images/stock-vector-seamless-yellow-banana-pattern-design-hand-drawn-banana-pattern-template'); /* Replace with your image path */
+    background-repeat: repeat; /* This will tile the image */
+  }
+
+  .home-container, 
+  .converter-container, 
+  .recipes-container, 
+  .funfacts-container, 
+  .forum-container, 
+  .books-container,
+  .login-container,
+  .signup-container,
+  .edit-container,
+  .post-container,
+  .answer-container,
+  .edit-answer-container {
+    background-color: black;
+    color: #e8b800;
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin: .25rem;
+    min-height: 400px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Login */
+.login-label {
+  margin: .25rem;
+}
+
+  /* BananaScale */
+  .conversions-container {
+    display: flex;
+    justify-content: space-evenly; /* Adjusts the spacing between the containers */
+    align-items: flex-start; /* Aligns containers to the top */
+    margin-bottom: 3rem;
+  }
+
+  .unit-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .unit-row {
+    text-align: left;
+    margin: 10px;
+  }
+
+  .unit-label {
+    display: block;
+  }
+
+/* Sidebar styles */
+.sidebar-container {
+  width: 25%;
+  min-width: 180px; /* Set sidebar width */
+  max-width: 300px;
+  transition: width 0.3s ease-in-out; /* Smooth transition for collapse */
+  border-radius: 5px;
+}
+
+.sidebar-container.collapsed {
+  width: 50px; /* Set collapsed sidebar width */
+}
+
+.sidebar-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.sidebar-item {
+  display: block;
+  position: relative;
+  border-radius: 5px;
+  margin: 5px;
+  text-decoration: none; /* Remove underline from links */
+  cursor: pointer; /* Set cursor to pointer for clickable items */
+  color: black; /* Match header button text color */
+  font-size: large; /* Match header button font size */
+  text-align: center; /* Center text */
+  padding: .25rem; /* Adjust padding to match header buttons if needed */
+  transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.sidebar-item:hover {
+  border: solid 1px black; /* Match header button hover state border */
+  background-color: black; /* Match header button hover background color */
+  color: #e8b800; /* Match header button hover text color */
+  font-size: larger; /* Match header button hover font size */
+}
+
+/* Optional: Define a hover state for the links */
+.sidebar-item a:hover {
+  color: #e8b800; /* Example hover color; change as needed */
+}
+
+.sidebar-gif img{
+  padding-right: 20px;
+  margin-top: 1.5rem;
+  width: 100%; /* Adjust the width as needed or use a specific pixel value */
+  height: auto; /* Adjust the height as needed, 'auto' maintains aspect ratio */
+  object-fit: cover; /* This ensures the image covers the area, use 'contain' to fit the image within without cropping */
+}
+
+@media (max-width: 1000px) {
+  .sidebar-container {
+    display: none; /* Hide sidebar */
   }
 }
 
-.card {
-  padding: 2em;
+
+/* Footer styles */
+
+.footer-container {
+  border-radius: 15px;
+  padding: 1rem;
+  margin: .25rem;
+  text-align: center;
 }
 
-.read-the-docs {
-  color: #888;
+/* Answer styles */
+.answer-input {
+  background-color: #e8b800;
+  height: 100px;
 }
+
