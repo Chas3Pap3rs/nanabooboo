@@ -1,0 +1,70 @@
+-- Create the users table
+CREATE TABLE users (
+    user_id INT PRIMARY KEY,
+    user_name VARCHAR(255) NOT NULL,
+    user_email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    user_created DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insert the sample user
+INSERT INTO users (user_id, user_name, user_email, password, user_created) VALUES
+(1, 'banadmin', 'banadmin@bananabooboo.com', '$2b$10$6CqSF9fPn3lKqfgNu/amkOwdDZ8iH/Qmq0o/1YT69qOCjtDm3H2D2', '2024-07-01 15:53:05');
+
+-- Create the categories table
+CREATE TABLE categories (
+    category_id INT PRIMARY KEY,
+    category_name VARCHAR(255) NOT NULL
+);
+
+-- Insert the sample categories
+INSERT INTO categories (category_id, category_name) VALUES
+(1, 'conversion'),
+(2, 'recipes'),
+(3, 'funfacts'),
+(4, 'books');
+
+-- Create the questions table
+CREATE TABLE questions (
+    question_id INT PRIMARY KEY AUTO_INCREMENT,
+    question_title VARCHAR(255) NOT NULL,
+    question TEXT NOT NULL,
+    category_id INT,
+    user_id INT,
+    question_created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Insert sample questions
+INSERT INTO questions (question_title, question, category_id, user_id) VALUES
+('How to convert bananas to apple weight?', 'What is the conversion ratio from bananas to apples by weight?', 1, 1),
+('Is banana weight equal to apple weight?', 'Are bananas and apples equal in weight?', 1, 1),
+('Best banana bread recipe?', 'What is the best recipe for banana bread?', 2, 1),
+('Easy banana smoothie?', 'How to make an easy banana smoothie?', 2, 1),
+('Interesting fact about bananas?', 'What is an interesting fact about bananas?', 3, 1),
+('Why are bananas curved?', 'Can someone explain why bananas are curved?', 3, 1),
+('Top books on bananas?', 'What are the top books about bananas?', 4, 1),
+('Best banana themed children books?', 'What are some great banana themed children books?', 4, 1);
+
+-- Create the answers table
+CREATE TABLE answers (
+    answer_id INT PRIMARY KEY AUTO_INCREMENT,
+    answer TEXT NOT NULL,
+    question_id INT,
+    user_id INT,
+    answer_created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (question_id) REFERENCES questions(question_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Insert sample answers
+INSERT INTO answers (answer, question_id, user_id) VALUES
+('The conversion ratio is roughly 3 bananas to 2 apples by weight.', 1, 1),
+('Bananas are generally heavier than apples by 10%.', 2, 1),
+('The best recipe for banana bread includes ripe bananas, flour, sugar, and baking soda.', 3, 1),
+('To make an easy banana smoothie, blend bananas with milk and honey.', 4, 1),
+('An interesting fact about bananas is that they are berries.', 5, 1),
+('Bananas are curved because they grow towards the sun.', 6, 1),
+('Top books on bananas include "Banana: The Fate of the Fruit That Changed the World" by Dan Koeppel.', 7, 1),
+('Great banana-themed children books include "Curious George and the Banana" by H.A. Rey.', 8, 1);
