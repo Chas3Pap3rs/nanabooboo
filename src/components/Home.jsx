@@ -58,10 +58,10 @@ function Home() {
 
           <thead>
             <tr>
-              <th>Category</th>
-              <th>Question</th>
-              <th>Question Actions</th>
-              <th>Answers</th>
+              <th>Category |</th>
+              <th>Question |</th>
+              <th>Question Actions |</th>
+              <th>Answers |</th>
               <th>Answer Actions</th>
             </tr>
           </thead>
